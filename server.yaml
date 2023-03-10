@@ -1,0 +1,36 @@
+environment:
+  dataCenter: "beijing"
+  cluster: "xpa"
+  domain: "yundiz.com"
+  production: false
+#  localIP: "10.10.3.7"
+
+vnc:
+  autoClose: true
+#如果打开GRPC的调用都指向appserver
+#debug:
+#  appServer: "127.0.0.1"
+
+icons:
+   -jm_eye: "icons/jm_eye.jpg"
+     
+pulsar:
+  topic: "merkaba"
+
+database:
+  mysql: "xpa"
+  mongo: "xpa"
+
+path:
+  config: "/workspace/xpa/go/merkaba/conf/"
+  shot: "/workspace/xpa/go/shot/"
+  logger: "/workspace/xpa/go/logs/"
+  temp: "/workspace/xpa/go/temp/"
+
+consul:
+  development:
+#        - "193.168.1.30:8500"       #xpa.dev
+    - "192.168.9.117:8500"       #xpa.pre
+#    - "192.168.8.121:8500"       #xpa.prod
+  production:
+    - "192.168.8.121:8500"       #xpa.prod

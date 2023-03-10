@@ -1,0 +1,36 @@
+syntax = "proto3";
+package rpc;
+option go_package = "/workspace/xpa/go/merkaba/src/rpc/;rpc";
+
+/* 该上下文用于java,python,go异构平台的GRPC服务 */
+message AgentContext {
+  string cookieId = 1;
+  string server = 2;
+  string userId = 3;
+  string userName = 4;
+  int64 timestamp = 5;
+  string traceId = 6;
+}
+
+message AgentResponse {
+  bool isSuccess = 1;
+  string serverName = 2;
+  int64 timestamp = 3;
+  int32 dataType = 4;
+  string dataBody = 5;
+}
+
+message AgentRequest {
+  AgentContext ctx = 1;
+  int32 langType = 2;
+  string module = 3;
+  string serviceName = 4;
+  string methodName = 5;
+  bytes params = 6;
+  bytes stream = 7;
+}
+
+service GrpcAgentService {
+  rpc invoke (AgentRequest) returns (AgentResponse) {
+  }
+}
